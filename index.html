@@ -97,6 +97,25 @@
         canvas.style.width = "960px";
         canvas.style.height = "600px";
       }
+              function resizeGame() {
+            var gameContainer = document.getElementById("unity-container");
+            var widthToHeight = 16 / 9;
+            var newWidth = window.innerWidth;
+            var newHeight = window.innerHeight;
+            var newWidthToHeight = newWidth / newHeight;
+
+            if (newWidthToHeight > widthToHeight) {
+                newWidth = newHeight * widthToHeight;
+            } else {
+                newHeight = newWidth / widthToHeight;
+            }
+
+            gameContainer.style.width = newWidth + 'px';
+            gameContainer.style.height = newHeight + 'px';
+        }
+
+        window.addEventListener('resize', resizeGame, false);
+        resizeGame();
 
       loadingBar.style.display = "block";
 
